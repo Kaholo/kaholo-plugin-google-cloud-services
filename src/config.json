@@ -1,0 +1,76 @@
+{
+  "name": "kaholo-plugin-google-cloud-services",
+  "type": "executer",
+  "execProgram": "node",
+  "main": "app.js",
+  "imgUrl": "icon.png",
+  "version": "1.0.0",
+  "description": "GCP cloud services",
+  "settings": [
+    {
+      "name": "CREDENTIALS",
+      "viewName": "Credentials",
+      "type": "vault"
+    }
+  ],
+  "methods": [
+    {
+      "name": "serviceList",
+      "viewName": "Services list",
+      "params": [
+        {
+          "name": "CREDENTIALS",
+          "viewName": "Credentials",
+          "type": "vault"
+        },
+        {
+          "name": "PROJECTID",
+          "viewName": "Project ID",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "serviceEnable",
+      "viewName": "Service enable",
+      "params": [
+        {
+          "name": "CREDENTIALS",
+          "viewName": "Credentials",
+          "type": "vault"
+        },
+        {
+          "name": "PROJECTID",
+          "viewName": "Project ID",
+          "type": "string"
+        },
+        {
+          "name": "SERVICE",
+          "viewName": "Service",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "serviceDisable",
+      "viewName": "Service disable",
+      "params": [
+        {
+          "name": "CREDENTIALS",
+          "viewName": "Credentials",
+          "type": "vault"
+        },
+        {
+          "name": "PROJECTID",
+          "viewName": "Project ID",
+          "type": "string"
+        },
+        {
+          "name": "SERVICE",
+          "viewName": "Service",
+          "type": "string"
+        }
+      ]
+    }
+  ]
+}

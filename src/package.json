@@ -1,0 +1,23 @@
+{
+  "name": "kaholo-plugin-google-cloud-services",
+  "version": "1.0.0",
+  "description": "Google Cloud Services plugin for Kaholo",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kaholo/kaholo-plugin-google-cloud-services.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kaholo/kaholo-plugin-google-cloud-services/issues"
+  },
+  "homepage": "https://github.com/Kaholo/kaholo-plugin-google-cloud-services#readme",
+  "dependencies": {
+    "google-auth-library": "4.2.0",
+    "googleapis": "40.0.0"
+  }
+}

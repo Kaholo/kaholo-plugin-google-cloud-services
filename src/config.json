@@ -1,5 +1,5 @@
 {
-  "name": "kaholo-plugin-google-cloud-services",
+  "name": "GCP-Services",
   "type": "executer",
   "execProgram": "node",
   "main": "app.js",
@@ -16,7 +16,7 @@
   "methods": [
     {
       "name": "serviceList",
-      "viewName": "Services list",
+      "viewName": "List Services",
       "params": [
         {
           "name": "CREDENTIALS",
@@ -32,7 +32,7 @@
     },
     {
       "name": "serviceEnable",
-      "viewName": "Service enable",
+      "viewName": "Enable Service",
       "params": [
         {
           "name": "CREDENTIALS",
@@ -53,7 +53,7 @@
     },
     {
       "name": "serviceDisable",
-      "viewName": "Service disable",
+      "viewName": "Disable Service",
       "params": [
         {
           "name": "CREDENTIALS",

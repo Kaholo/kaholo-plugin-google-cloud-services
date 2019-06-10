@@ -1,25 +1,31 @@
 const { google } = require('googleapis');
 const { JWT } = require('google-auth-library');
 
+function _getAuth(action, settings){
+    let keysParam = action.params.CREDENTIALS || settings.CREDENTIALS
+    let keys;
+    if (typeof keysParam != 'string'){
+        keys = keysParam;
+    } else {
+        try{
+            keys = JSON.parse(keysParam)
+        }catch(err){
+            throw new Error("Invalid credentials JSON");
+        }
+    }
+    const auth = new JWT(
+        keys.client_email,
+        null,
+        keys.private_key,
+        ['https://www.googleapis.com/auth/cloud-platform'],
+    );
+
+    return auth;
+}
+
 function serviceList(action, settings) {
     return new Promise((resolve, reject) => {
-        let keysParam = action.params.CREDENTIALS || settings.CREDENTIALS
-        let keys;
-        if (typeof keysParam != 'string'){
-            keys = keysParam;
-        } else {
-            try{
-                keys = JSON.parse(keysParam)
-            }catch(err){
-                return Promise.reject("Invalid credentials JSON");
-            }
-        }
-        const auth = new JWT(
-            keys.client_email,
-            null,
-            keys.private_key,
-            ['https://www.googleapis.com/auth/cloud-platform'],
-        );
+        const auth = _getAuth(action,settings);
         let request = {
             parent: 'projects/' + action.params.PROJECTID,
             auth: auth
@@ -35,23 +41,7 @@ function serviceList(action, settings) {
 
 function serviceEnable(action, settings) {
     return new Promise((resolve, reject) => {
-        let keysParam = action.params.CREDENTIALS || settings.CREDENTIALS
-        let keys;
-        if (typeof keysParam != 'string'){
-            keys = keysParam;
-        } else {
-            try{
-                keys = JSON.parse(keysParam)
-            }catch(err){
-                return Promise.reject("Invalid credentials JSON");
-            }
-        }
-        const auth = new JWT(
-            keys.client_email,
-            null,
-            keys.private_key,
-            ['https://www.googleapis.com/auth/cloud-platform'],
-        );
+        const auth = _getAuth(action,settings);
         let request = {
             name: 'projects/'+ action.params.PROJECTID + '/services/' + action.params.SERVICE,
             auth: auth
@@ -67,23 +57,7 @@ function serviceEnable(action, settings) {
 
 function serviceDisable(action, settings) {
     return new Promise((resolve, reject) => {
-        let keysParam = action.params.CREDENTIALS || settings.CREDENTIALS
-        let keys;
-        if (typeof keysParam != 'string'){
-            keys = keysParam;
-        } else {
-            try{
-                keys = JSON.parse(keysParam)
-            }catch(err){
-                return Promise.reject("Invalid credentials JSON");
-            }
-        }
-        const auth = new JWT(
-            keys.client_email,
-            null,
-            keys.private_key,
-            ['https://www.googleapis.com/auth/cloud-platform'],
-        );
+        const auth = _getAuth(action,settings);
         let request = {
             name: 'projects/'+ action.params.PROJECTID + '/services/' + action.params.SERVICE,
             auth: auth
